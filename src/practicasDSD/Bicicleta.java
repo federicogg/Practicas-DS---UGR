@@ -8,13 +8,15 @@ public abstract class Bicicleta extends Thread
 	protected int id;
 	protected int kilometros_recorridos;
 	protected Boolean en_carrera;
+	protected Tipo tipo;
 	
 	//Constructor
-	Bicicleta (int id)
+	Bicicleta (int id, Tipo tipo)
 	{
 		this.id = id;
 		this.kilometros_recorridos = 0;
 		this.en_carrera = false;
+		this.tipo = tipo;
 		
 	}
 	
