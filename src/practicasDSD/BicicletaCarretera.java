@@ -1,5 +1,6 @@
 package practicasDSD;
 
-public class BicicletaCarretera extends Bicicleta {
-
+public class BicicletaCarretera extends Bicicleta 
+{
+	
 }
