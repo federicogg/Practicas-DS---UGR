@@ -1,6 +1,7 @@
 package practicasDSD;
 
-public class FactoriaMontana implements FactoriaAbstracta{
+public class FactoriaMontana implements FactoriaAbstracta
+{
 	
 	public Bicicleta crearBicicleta()
 	{
