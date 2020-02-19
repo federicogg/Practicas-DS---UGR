@@ -7,5 +7,11 @@ public class FactoriaMontana implements FactoriaAbstracta{
 		BicicletaMontana bicicletaMontana = new BicicletaMontana();
 		return bicicletaMontana;
 	}
+	
+	public Carrera crearCarrera()
+	{
+		CarreraMontana carreraMontana = new CarreraMontana();
+		return carreraMontana;
+	}
 
 }

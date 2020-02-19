@@ -4,8 +4,14 @@ public class FactoriaCarretera implements FactoriaAbstracta{
 
 	public Bicicleta crearBicicleta()
 	{
-		BicicletaCarrera bicicletaCarrera = new BicicletaCarrera();
-		return bicicletaCarrera;
+		BicicletaCarretera bicicletaCarretera = new BicicletaCarretera();
+		return bicicletaCarretera;
+	}
+	
+	public Carrera crearCarrera()
+	{
+		CarreraCarretera carreraCarretera = new CarreraCarretera();
+		return carreraCarretera;
 	}
 
 }
