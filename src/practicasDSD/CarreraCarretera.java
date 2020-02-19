@@ -1,5 +1,6 @@
 package practicasDSD;
 
-public class CarreraCarretera extends Carrera{
+public class CarreraCarretera extends Carrera
+{
 
 }

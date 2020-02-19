@@ -1,8 +1,7 @@
 package practicasDSD;
 
-public abstract class Bicicleta extends Thread{
+public abstract class Bicicleta extends Thread
+{
 
-	
-	
-	
+
 }
