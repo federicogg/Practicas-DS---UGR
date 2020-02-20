@@ -26,9 +26,6 @@ public abstract class Bicicleta extends Thread
 	}
 	
 	
-	
-	
-	
 	//Comenzar la hebra ('que la bicicleta empiece a avanzar')
 	@Override
 	public void run()
@@ -44,8 +41,6 @@ public abstract class Bicicleta extends Thread
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-			
-	
 	}
 
 }
