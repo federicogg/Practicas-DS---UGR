@@ -3,9 +3,9 @@ package practicasDSD;
 public class FactoriaMontana implements FactoriaAbstracta
 {
 	
-	public Bicicleta crearBicicleta()
+	public Bicicleta crearBicicleta(int id)
 	{
-		BicicletaMontana bicicletaMontana = new BicicletaMontana();
+		BicicletaMontana bicicletaMontana = new BicicletaMontana(id);
 		return bicicletaMontana;
 	}
 	

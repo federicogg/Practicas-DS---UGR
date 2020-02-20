@@ -4,5 +4,5 @@ public interface FactoriaAbstracta
 {
 
 	public Carrera crearCarrera ();
-	public Bicicleta crearBicicleta();
+	public Bicicleta crearBicicleta(int id);
 }
