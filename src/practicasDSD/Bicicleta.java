@@ -27,6 +27,8 @@ public abstract class Bicicleta extends Thread
 	
 	
 	
+	
+	
 	//Comenzar la hebra ('que la bicicleta empiece a avanzar')
 	@Override
 	public void run()
@@ -36,6 +38,7 @@ public abstract class Bicicleta extends Thread
 			while (en_carrera)
 			{
 				Thread.sleep((long) (Math.random()*1000));
+				kilometros_recorridos++;
 				
 			}
 		}catch (Exception e) {
