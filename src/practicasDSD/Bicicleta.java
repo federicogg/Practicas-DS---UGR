@@ -20,9 +20,9 @@ public abstract class Bicicleta extends Thread
 		
 	}
 	
-	public void setEn_carrera (Boolean en_carrera) 
+	public void pararBicicleta () 
 	{
-		this.en_carrera = en_carrera;
+		this.en_carrera = false;
 	}
 	
 	
@@ -34,9 +34,8 @@ public abstract class Bicicleta extends Thread
 		{
 			while (en_carrera)
 			{
-				Thread.sleep((long) (Math.random()*1000));
+				Thread.sleep((long) (Math.random()*2000));
 				kilometros_recorridos++;
-				
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
