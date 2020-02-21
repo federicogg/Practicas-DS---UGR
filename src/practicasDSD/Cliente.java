@@ -48,14 +48,19 @@ public class Cliente extends Thread
 		while (!carreraMontana.getAcabada() || !carreraCarretera.getAcabada())
 		{
 			try {
-				Thread.sleep(6000);
-				System.out.println ("Hay alguna carrera en curso... ");
+				Thread.sleep(2000);
+				//carreraCarretera.mostrarInformacion();
+				//carreraMontana.mostrarInformacion();
+				Thread.sleep(2000);
 				System.out.print("\033[H\033[2J");
                 System.out.flush();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		
+		//carreraCarretera.mostrarFinalizada();
+		//carreraMontana.mostrarFinalizada();
 		
 		
 	

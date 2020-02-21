@@ -55,18 +55,23 @@ public class Carrera extends Thread
 		while (!cronometro.getAcabado())
 		{
 			try {
-				//Implementar que se pierdan las bicicletas respectivas al tipo de carrera
+				//Implementar el remover % de las bicicletas respectivas al tipo de carrera
 				//Implementar el dar información sobre la carrera cada 2 o 3 segundos
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
+		
+		
 		for (Bicicleta bicicleta : bicicletas) {
 			bicicleta.pararBicicleta();
 		}
 		
-		System.out.println ("Las carrera de " + this.tipo.toString() +   " ha terminado");
+		
+		
+		acabada = true;
+		
 	}
 	
 	
