@@ -1,6 +1,5 @@
 package practicasDSD;
 
-import java.util.Random;
 
 
 public abstract class Bicicleta extends Thread

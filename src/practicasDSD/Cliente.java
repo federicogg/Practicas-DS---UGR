@@ -4,6 +4,8 @@ package practicasDSD;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.xml.ws.AsyncHandler;
+
 
 
 
@@ -41,7 +43,19 @@ public class Cliente extends Thread
 		carreraMontana.empezarCarrera(bicicletasMontana);
 		carreraCarretera.empezarCarrera(bicicletasCarretera);
 		
-		while (carreraMontana.)
+		
+		//Hasta que no acaben las dos
+		while (!carreraMontana.getAcabada() || !carreraCarretera.getAcabada())
+		{
+			try {
+				Thread.sleep(6000);
+				System.out.println ("Hay alguna carrera en curso... ");
+				System.out.print("\033[H\033[2J");
+                System.out.flush();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 	
