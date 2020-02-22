@@ -18,11 +18,10 @@ public class Cronometro extends Thread{
 	{
 		//Esperamos un minuto
 		try {
-			Thread.sleep(60000);
+			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		fin = true;
+		this.fin = true;
 	}
 }

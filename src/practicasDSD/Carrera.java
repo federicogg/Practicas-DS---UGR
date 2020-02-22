@@ -2,6 +2,7 @@ package practicasDSD;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Carrera extends Thread
 {
@@ -31,13 +32,17 @@ public class Carrera extends Thread
 		{
 			this.bicicletas = bicicletas;
 			this.start();
-			
+
 		}else {
 			System.out.println("Debe de pasar como argumento un array con bicicletas");
 		}
 	}
-	
-	
+
+	public void mostrarInformacion(){
+		for(Bicicleta bicicleta : this.bicicletas){
+			bicicleta.mostrarInformacion();
+		}
+	}
 	
 	@Override
 	public void run()
@@ -50,11 +55,14 @@ public class Carrera extends Thread
 		
 		for (Bicicleta bicicleta : bicicletas) {
 			bicicleta.start();
+			bicicleta.setEnCarrera(true);
 		}
 		
 		while (!cronometro.getAcabado())
 		{
 			try {
+				System.out.println(2);
+
 				//Implementar el remover % de las bicicletas respectivas al tipo de carrera
 				//Implementar el dar información sobre la carrera cada 2 o 3 segundos
 			} catch (Exception e) {
@@ -67,7 +75,6 @@ public class Carrera extends Thread
 		for (Bicicleta bicicleta : bicicletas) {
 			bicicleta.pararBicicleta();
 		}
-		
 		
 		
 		acabada = true;
