@@ -5,14 +5,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-
-
-
 public class Cliente extends Thread
 {
-	
-	
-	
+
 	public static void main (String[] args)
 	{
 		//Creamos dos factorias cada uno de un tipo diferente de subproducto
@@ -33,11 +28,11 @@ public class Cliente extends Thread
 		
 		for (int i=0; i<n; i++)
 		{
-			
 			bicicletasCarretera.add(factoriaCarretera.crearBicicleta(i));
 			bicicletasMontana.add(factoriaMontana.crearBicicleta(i));
 		}
-		
+
+
 		//Empezamos las dos carreras
 		carreraMontana.empezarCarrera(bicicletasMontana);
 		carreraCarretera.empezarCarrera(bicicletasCarretera);
@@ -48,8 +43,8 @@ public class Cliente extends Thread
 		{
 			try {
 				Thread.sleep(2000);
-				//carreraCarretera.mostrarInformacion();
-				//carreraMontana.mostrarInformacion();
+			//	carreraCarretera.mostrarInformacion();
+			 //	carreraMontana.mostrarInformacion();
 				Thread.sleep(2000);
 				System.out.print("\033[H\033[2J");
                 System.out.flush();
@@ -60,11 +55,7 @@ public class Cliente extends Thread
 		
 		//carreraCarretera.mostrarFinalizada();
 		//carreraMontana.mostrarFinalizada();
-		
-		
-	
 
-		
 	}
 	
 	

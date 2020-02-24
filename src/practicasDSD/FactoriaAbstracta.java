@@ -3,6 +3,6 @@ package practicasDSD;
 public interface FactoriaAbstracta 
 {
 
-	public Carrera crearCarrera ();
-	public Bicicleta crearBicicleta(int id);
+	Carrera crearCarrera ();
+	Bicicleta crearBicicleta(int id);
 }

@@ -5,25 +5,54 @@ package practicasDSD;
 public abstract class Bicicleta extends Thread
 {
 	protected int id;
-	protected int kilometros_recorridos;
-	protected Boolean en_carrera;
+	protected int kilometrosRecorridos;
+	protected Boolean enCarrera;
 	protected Tipo tipo;
+
+
+	public int getBicicletaId(){
+		return this.id;
+	}
+
+	public int getKilometrosRecorridos(){
+		return this.kilometrosRecorridos;
+	}
+
+	public Boolean getEnCarrera(){
+		return this.enCarrera;
+	}
+
+	public void setEnCarrera(Boolean enCarrera){
+		this.enCarrera = enCarrera;
+	}
+
+	public Tipo getTipo(){
+		return this.tipo;
+	}
 	
 	//Constructor
 	Bicicleta (int id, Tipo tipo)
 	{
 		this.id = id;
-		this.kilometros_recorridos = 0;
-		this.en_carrera = false;
+		this.kilometrosRecorridos = 0;
+		this.enCarrera = false;
 		this.tipo = tipo;
 		
 	}
 	
 	public void pararBicicleta () 
 	{
-		this.en_carrera = false;
+		this.enCarrera = false;
 	}
-	
+
+	public void mostrarInformacion(){
+		if(this.enCarrera) {
+			System.out.println("Bicicleta no. " + this.id + " of type " + this.tipo + " is on " + this.kilometrosRecorridos + " km.");
+		}
+		else{
+			System.out.println("Bicicleta no. " + this.id + " of type " + this.tipo + " is out of the game.");
+		}
+	}
 	
 	//Comenzar la hebra ('que la bicicleta empiece a avanzar')
 	@Override
@@ -31,14 +60,15 @@ public abstract class Bicicleta extends Thread
 	{
 		try 
 		{
-			while (en_carrera)
+			while (enCarrera)
 			{
 				Thread.sleep((long) (Math.random()*2000));
-				kilometros_recorridos++;
+				kilometrosRecorridos++;
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			this.enCarrera = false;
 		}
 	}
+
 
 }

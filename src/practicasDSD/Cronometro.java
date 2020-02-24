@@ -3,26 +3,29 @@ package practicasDSD;
 public class Cronometro extends Thread{
 	
 	Boolean fin;
+	double time;
 	
-	Cronometro() {
+	Cronometro(double time) {
 		this.fin = false;
+		this.time = time;
 	}
 	
 	public Boolean getAcabado ()
 	{
 		return fin;
 	}
-	
+	public double pauseOfCronometro(){
+		return time;
+	}
 	@Override
 	public void run()
 	{
-		//Esperamos un minuto
 		try {
-			Thread.sleep(60000);
+			Thread.sleep((long) (time * 10000));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		fin = true;
+
+		this.fin = true;
 	}
 }
