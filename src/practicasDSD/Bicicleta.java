@@ -8,6 +8,7 @@ public abstract class Bicicleta extends Thread
 	protected int kilometrosRecorridos;
 	protected Boolean enCarrera;
 	protected Tipo tipo;
+	protected boolean successfullyTerminate;
 
 
 	public int getBicicletaId(){
@@ -37,6 +38,7 @@ public abstract class Bicicleta extends Thread
 		this.kilometrosRecorridos = 0;
 		this.enCarrera = false;
 		this.tipo = tipo;
+		this.successfullyTerminate = true;
 		
 	}
 	
@@ -67,6 +69,7 @@ public abstract class Bicicleta extends Thread
 			}
 		}catch (Exception e) {
 			this.enCarrera = false;
+			this.successfullyTerminate = false;
 		}
 	}
 

@@ -1,10 +1,9 @@
 package practicasDSD;
 
-
-import java.time.LocalTime;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.TimerTask;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class Carrera extends Thread
@@ -12,7 +11,7 @@ public class Carrera extends Thread
 	private ArrayList <Bicicleta> bicicletas;
 	private Tipo tipo;
 	private Boolean acabada;
-	
+
 	Carrera(Tipo tipo) 
 	{
 		this.tipo = tipo;
@@ -41,11 +40,28 @@ public class Carrera extends Thread
 		}
 	}
 
-	public void mostrarInformacion(){
-		for(Bicicleta bicicleta : this.bicicletas){
-			bicicleta.mostrarInformacion();
-		}
-	}
+	public void mostrarInformacion() {
+        System.out.println("The game is over.");
+        Bicicleta[] bicicletas1 = bicicletas.toArray((new Bicicleta[bicicletas.size()]));
+        int n = bicicletas1.length;
+        Bicicleta temp;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                if (bicicletas1[j - 1].kilometrosRecorridos < bicicletas1[j].kilometrosRecorridos) {
+                    temp = bicicletas1[j - 1];
+                    bicicletas1[j - 1] = bicicletas1[j];
+                    bicicletas1[j] = temp;
+                }
+            }
+        }
+        for (Bicicleta bicicleta : bicicletas1) {
+            if(bicicleta.successfullyTerminate) {
+                System.out.println("Bicicleta no. " + bicicleta.id + " of type " + bicicleta.tipo + " run for " + bicicleta.kilometrosRecorridos);
+            }else{
+                System.out.println("Bicicleta no. " + bicicleta.id + " of type " + bicicleta.tipo + " did not terminate.");
+            }
+        }
+    }
 
 	@Override
 	public void run()
@@ -57,53 +73,57 @@ public class Carrera extends Thread
 		Cronometro cronometroDeTerminar = new Cronometro(Math.random() * 4);
 		cronometroDeCarrera.start();
 		cronometroDeTerminar.start();
-		
+
+		int sizeToRemove1 = (int) (bicicletas.size()*0.1);
+		int sizeToRemove2 = (int) (bicicletas.size()*0.2);
+
 		for (Bicicleta bicicleta : bicicletas) {
 			bicicleta.start();
 			bicicleta.setEnCarrera(true);
 		}
-		int sizeToRemove1 = (int) (bicicletas.size()*0.1);
 
-		//System.out.println(sizeToRemove);
 		boolean temp = true;
-		while (!cronometroDeCarrera.getAcabado()) {
+
+        long startTime = System.nanoTime();
+        long endTime   = 0;
+        while (!cronometroDeCarrera.getAcabado()) {
 			try {
 				if (!cronometroDeTerminar.isAlive() && temp) {
+					if(tipo==Tipo.CARRETERA){
+
 					while (sizeToRemove1 > 0) {
 						bicicletas.get(sizeToRemove1).interrupt();
 						sizeToRemove1--;
 					}
+					}
+					if(tipo==Tipo.MONTANA){
+						while (sizeToRemove2 > 0) {
+							bicicletas.get(sizeToRemove2).interrupt();
+							sizeToRemove2--;
+						}
+					}
 					temp = false;
 
 				}
-				for (Bicicleta bicicleta : bicicletas) {
-					if ((cronometroDeCarrera.pauseOfCronometro())==3||(cronometroDeCarrera.pauseOfCronometro())==6)
-						bicicleta.mostrarInformacion();
-				}
+                Thread.sleep(1000);
+				if(((endTime - startTime)/1000000000) % 10 == 0){
+				    for (Bicicleta bicicleta : bicicletas) {
+					    	bicicleta.mostrarInformacion();
+				    }
+                    System.out.println("--------------------------------------------");
 
-
-
-				// Implementar el remover % de las bicicletas respectivas al tipo de carrera
-				//Implementar el dar información sobre la carrera cada 2 o 3 segundos
+                }
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			endTime = System.nanoTime();
 		}
-		
 		
 		
 		for (Bicicleta bicicleta : bicicletas) {
 			bicicleta.pararBicicleta();
 
 		}
-		
-		
 		acabada = true;
-		
 	}
-	
-	
-	
-	
-		
 }
